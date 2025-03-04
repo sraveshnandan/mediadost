@@ -17,7 +17,7 @@ const BlogSections = async (props: Props) => {
       </h1>
 
       <div className="w-full my-12 gap-3 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {blogs &&
+        {blogs.length > 0 &&
           blogs.map((item: Blog) => <BlogCard key={item.id} blog={item} />)}
       </div>
 

@@ -16,7 +16,7 @@ const CategoriesSection = async (props: Props) => {
       </h2>
 
       <div className="lg:w-[90%] w-full  my-8 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 place-content-center place-items-center gap-2">
-        {categories.length ? (
+        {categories.length > 0 ? (
           categories?.map((item: any) => (
             <Link
               href={`/`}

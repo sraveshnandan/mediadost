@@ -28,6 +28,7 @@ const HeroSection = (props: Props) => {
           {HeroCTAActions.map((item) => (
             <Link
               href={item.link}
+              key={item.name}
               className="flex transition-all duration-300 hover:drop-shadow-lg hover:scale-95 flex-col w-full items-center p-3 gap-2 bg-white rounded-md ">
               <FontAwesomeIcon icon={item.icon} size="3x" color="#535de0" />
               <h2 className="text-primary-100 font-semibold text-2xl">
