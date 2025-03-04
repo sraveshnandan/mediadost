@@ -8,7 +8,10 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: [{ hostname: "ap-south-1.graphassets.com" }],
+    remotePatterns: [
+      { hostname: "ap-south-1.graphassets.com" },
+      { hostname: "img.clerk.com" },
+    ],
   },
 };
 

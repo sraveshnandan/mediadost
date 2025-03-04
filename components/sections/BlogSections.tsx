@@ -18,7 +18,9 @@ const BlogSections = async (props: Props) => {
 
       <div className="w-full my-12 gap-3 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {blogs.length > 0 &&
-          blogs.map((item: Blog) => <BlogCard key={item.id} blog={item} />)}
+          blogs
+            .slice(0, 3)
+            .map((item: Blog) => <BlogCard key={item.id} blog={item} />)}
       </div>
 
       <div className="w-full justify-end flex items-end">

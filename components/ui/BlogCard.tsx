@@ -16,8 +16,10 @@ const BlogCard = ({ blog }: Props) => {
         <Image
           src={mainImage.url}
           alt="blog_image"
-          width={100}
-          height={100}
+          width={1024}
+          height={720}
+          quality={100}
+          loading="lazy"
           className="w-full aspect-video h-auto rounded-md"
         />
       </div>
@@ -31,7 +33,7 @@ const BlogCard = ({ blog }: Props) => {
       {/* read more button  */}
       <div className="w-full justify-end flex items-end">
         <Link
-          href={`/blog${id}`}
+          href={`/blog/${id}`}
           className="flex hover:text-yellow-100 text-primary-100 group flex-row  font-semibold items-center gap-1">
           Read more
           <div>

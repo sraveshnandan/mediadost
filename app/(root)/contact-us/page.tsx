@@ -4,26 +4,28 @@ import React from "react";
 
 const ContactPage = () => {
   return (
-    <div className="w-[80%] mx-auto flex   p-8 items-center justify-center flex-col">
+    <div className="w-[90%]  mx-auto flex lg:p-8 p-4 items-center justify-center flex-col">
       <h1 className="text-4xl font-semibold">Contact Us</h1>
-      <p className="text-lg font-semibold text-gray-400">
+      <p className="text-lg text-center font-semibold text-gray-400">
         Have a question? We&apos;re here to help! Reach out to us and we&apos;ll
         get back to you as soon as possible.
       </p>
 
-      <div className="w-full flex my-8 md:flex-row flex-col-reverse">
+      <div className="w-full flex my-8  lg:flex-row flex-col-reverse">
         <div className="w-full lg:w-1/2">
           <ContactForm />
         </div>
         {/* details  */}
-        <div className="w-full flex flex-col justify-between p-4 lg:w-[45%]">
-          <Image
-            src={"/images/contact-image.png"}
-            alt="contact-image"
-            width={2000}
-            height={1143}
-            className="w-full aspect-video h-72"
-          />
+        <div className="w-full  flex flex-col justify-between p-4 lg:w-[45%]">
+          <div className="w-full  h-[50%]">
+            <Image
+              src={"/images/contact-image.png"}
+              alt="contact-image"
+              width={1024}
+              height={720}
+              className="w-full aspect-video h-full"
+            />
+          </div>
           <div className="flex flex-col gap-3">
             <h2 className="text-primary-100 mb-3 text-3xl font-semibold">
               Our Contact Info
@@ -59,6 +61,15 @@ const ContactPage = () => {
       </div>
 
       <h1 className="text-4xl my-5 font-semibold">Reach Us</h1>
+
+      <div className="w-full h-96 rounded-lg overflow-hidden">
+        <iframe
+          className="w-full h-full"
+          src="https://www.google.com/maps/dir//Government+Engineering+College+(GEC),+Jamui+Village:+Amrath+Post+:+Amrath,+Bihar+811313/@24.9541426,86.1828698,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x39f229989386e797:0xcb8bce312617261f!2m2!1d86.1828698!2d24.9541426?entry=ttu&g_ep=EgoyMDI1MDIyNi4xIKXMDSoASAFQAw%3D%3D"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   );
 };

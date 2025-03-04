@@ -56,32 +56,33 @@ export const DeleteUser = async (clerkId: string) => {
   }
 };
 
-export const updateUser = async (id: string, user: UserType) => {
+export const updateUser = async (user: UserType) => {
   try {
     const query = gql`
-      mutation MyMutation($UserData: CustomerCreateInput!, $id: String) {
-        createCustomer(data: $UserData, where: { clerkId: id }) {
+      mutation MyMutation($data: CustomerUpdateInput!, $clerkId: String!) {
+        updateCustomer(data: $data, where: { clerkId: $clerkId }) {
+          avatar
           clerkId
-          id
+          createdAt
           email
           fullName
-          avatar
+          id
         }
       }
     `;
 
     const variable = {
-      UserData: { ...user },
-      id,
+      data: user,
+      clerkId: user.clerkId,
     };
 
     const res: Record<string, unknown> = await api_client.request(
       query,
       variable
     );
-
-    return res.updateCustomer;
+    return true;
   } catch (error: any) {
-    return error.response.errors[0].message;
+    console.log(JSON.stringify(error, null, 2));
+    return error?.message || "";
   }
 };

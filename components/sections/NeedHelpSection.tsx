@@ -25,7 +25,7 @@ const NeedHelpSection = (props: Props) => {
         </Link>
       </div>
 
-      <div className="h-full w-full  flex lg:w-[30%] justify-end">
+      <div className="h-full w-full  flex lg:w-[35%] justify-end">
         <Image
           src={"/images/thinking.svg"}
           alt="think"

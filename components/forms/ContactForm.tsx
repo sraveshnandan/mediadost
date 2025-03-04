@@ -1,6 +1,11 @@
 "use client";
 import React, { FormEvent, useState } from "react";
 import { Button } from "../ui/button";
+import { ContactFormPayloadType } from "@/types";
+import { SubmitContactForm } from "@/services/form.services";
+import toast from "react-hot-toast";
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import { Loader2 } from "lucide-react";
 
 type Props = {};
 
@@ -13,7 +18,7 @@ const InquiryType = [
 ];
 
 const ContactForm = (props: Props) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Record<string, string>>({
     name: "",
     email: "",
     phoneNumber: "",
@@ -21,15 +26,42 @@ const ContactForm = (props: Props) => {
     message: "",
   });
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const handleOnSubmit = async (ev: FormEvent) => {
     ev.preventDefault();
-    console.log(formData);
+    const payload: ContactFormPayloadType = {
+      name: formData.name,
+      email: formData.email,
+      phone: Number(formData.phoneNumber),
+      inquiryType: formData.inquiryType,
+      message: formData.message,
+    };
+
+    try {
+      setLoading(true);
+      const res = await SubmitContactForm(payload);
+      console.log(res);
+      if (typeof res !== "string") {
+        Object.keys(formData).forEach((key) => {
+          formData[key] = "";
+        });
+
+        return toast.success("Your request submitted.");
+      } else {
+        return toast.error("Something went wrong.");
+      }
+    } catch (error) {
+      return toast.error("Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <form
       onSubmit={handleOnSubmit}
-      className="flex flex-col border p-3 w-full mx-auto rounded-md my-4 lg:my-0">
+      className={`flex relative  flex-col border p-3 w-full mx-auto rounded-md my-4 font-semibold lg:my-0`}>
       <h1 className="text-3xl pb-3 border-b-2 w-fit border-b-gray-300 font-semibold text-primary-100">
         Contact Us Now
       </h1>
@@ -40,10 +72,10 @@ const ContactForm = (props: Props) => {
           value={formData.name}
           placeholder="Your Name*"
           onChange={(ev) =>
-            setFormData((prev) => ({ ...prev, name: ev.target.value.trim() }))
+            setFormData((prev) => ({ ...prev, name: ev.target.value }))
           }
           required
-          className="p-4 my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
+          className="p-4 font-semibold  my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
         />
         <input
           type="email"
@@ -51,15 +83,16 @@ const ContactForm = (props: Props) => {
           value={formData.email}
           placeholder="Your Email*"
           onChange={(ev) =>
-            setFormData((prev) => ({ ...prev, email: ev.target.value.trim() }))
+            setFormData((prev) => ({ ...prev, email: ev.target.value }))
           }
           required
-          className="p-4 my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
+          className="p-4 font-semibold my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
         />
         <input
           type="text"
           value={formData.phoneNumber}
           placeholder="Your Phone Number*"
+          maxLength={10}
           onChange={(ev) =>
             setFormData((prev) => ({
               ...prev,
@@ -68,7 +101,7 @@ const ContactForm = (props: Props) => {
           }
           inputMode="numeric"
           required
-          className="p-4 my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
+          className="p-4 font-semibold my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
         />
 
         {/* type selector  */}
@@ -76,7 +109,7 @@ const ContactForm = (props: Props) => {
         <select
           defaultValue={"Select an Inquiry type"}
           value={formData.inquiryType}
-          className="p-4 my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
+          className="p-4 font-semibold my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
           required
           onChange={(ev) =>
             setFormData((prev) => ({ ...prev, inquiryType: ev.target.value }))
@@ -89,24 +122,28 @@ const ContactForm = (props: Props) => {
         </select>
         <textarea
           value={formData.message}
-          placeholder="Your Phone Number*"
+          placeholder="Your Message*"
           onChange={(ev) =>
             setFormData((prev) => ({
               ...prev,
-              message: ev.target.value.trim(),
+              message: ev.target.value,
             }))
           }
           rows={5}
           required
-          className="p-4 my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
+          className="p-4 font-semibold my-3 placeholder:text-lg placeholder:font-semibold outline-none w-full border rounded-md"
         />
       </div>
 
-      <Button
+      <button
         type="submit"
-        className="bg-primary-100 text-white text-lg font-semibold w-fit py-3 px-5">
-        Submit
-      </Button>
+        disabled={loading}
+        className={`bg-primary-100 flex flex-row items-center gap-2 rounded-lg text-white text-lg font-semibold w-fit py-3 px-5 ${
+          loading && "bg-secondary-100"
+        }`}>
+        {loading && <Loader2 className="animate-spin" />}
+        {loading ? "Submitting..." : "Submit"}
+      </button>
     </form>
   );
 };

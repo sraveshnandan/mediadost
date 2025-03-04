@@ -23,15 +23,18 @@ const NewsLetterSection = (props: Props) => {
 
         {/* email input box  */}
 
-        <form className="xl:w-[40%] lg:mt-12 mt-6 items-center lg:w-[50%] md:w-[60%] w-[90%] my-4 flex flex-row bg-white rounded-md p-2">
-          <MailOpen className="text-gray-400" size={20} />
-          <input
-            className="flex-grow outline-none placeholder:font-medium border-none md:p-3 p-1"
-            type="text"
-            placeholder="Enter your email..."
-          />
-          <div className="w-[40%]">
-            <button className="bg-primary-100 w-full p-2  text-md flex gap-2 lg:px-5 lg:py-3 justify-center text-white font-semibold line-clamp-1  rounded-md  text-sm flex-row items-center">
+        <form className="xl:w-[40%] overflow-hidden lg:mt-12  mt-6 items-center lg:w-[50%] md:w-[60%] w-[95%] my-4 flex flex-row bg-white rounded-md p-2">
+          <div className=" flex items-center flex-row flex-grow">
+            {" "}
+            <MailOpen className="text-gray-400" size={20} />
+            <input
+              className=" outline-none placeholder:font-medium border-none md:p-3 p-2"
+              type="text"
+              placeholder="Enter your email..."
+            />
+          </div>
+          <div className="max-w-[40%] w-fit">
+            <button className="bg-primary-100 w-full p-2  text-xs md:text-md  flex gap-2 lg:px-5 lg:py-3 px-2 py-2 justify-center text-white font-semibold line-clamp-1  rounded-md   flex-row items-center">
               <Bell />
               Subscribe Now
             </button>

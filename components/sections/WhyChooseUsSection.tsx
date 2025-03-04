@@ -11,13 +11,16 @@ const WhyChooseUsSection = (props: Props) => {
     <div className="w-full flex lg:flex-row my-8 flex-col items-center justify-center">
       {/* image section  */}
       <div className="lg:w-1/2 relative my-4 lg:my-0 w-full flex items-center justify-center">
-        <Image
-          src={"/images/about-banner1.jpg"}
-          alt="banner1"
-          width={100}
-          height={100}
-          className="w-[80%] h-fit hover:animate-pulse rounded-md grayscale hover:scale-90 hover:grayscale-0 transition-all duration-700"
-        />
+        <div className="w-[60%]">
+          <Image
+            src={"/images/about-banner1.jpg"}
+            alt="banner1"
+            width={1024}
+            height={720}
+            quality={100}
+            className="w-full h-full   rounded-md  transition-all duration-700"
+          />
+        </div>
         <Image
           src={"/images/about-banner2.jpg"}
           alt="banner1"

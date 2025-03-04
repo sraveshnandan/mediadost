@@ -96,3 +96,36 @@ export const FetchAllBlogs = async () => {
     return error?.message ?? "Something went wrong.";
   }
 };
+
+export const FetchBlogById = async (blogId: string) => {
+  try {
+    const query = gql`
+      query MyQuery($blogId: ID!) {
+        blog(where: { id: $blogId }) {
+          id
+          author
+          title
+          mainImage {
+            id
+            url
+          }
+          adImage {
+            id
+            url
+          }
+          context
+          createdAt
+        }
+      }
+    `;
+
+    const variables = {
+      blogId,
+    };
+
+    const res: GraphQLResponse = await api_client.request(query, variables);
+    return res.blog;
+  } catch (error: any) {
+    return error?.message ?? "Something went wrong.";
+  }
+};

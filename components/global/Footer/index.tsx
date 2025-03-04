@@ -51,7 +51,7 @@ const Footer = (props: Props) => {
             <div className="w-full flex  gap-2 flex-col">
               {FooterLinks1.map((item) => (
                 <Link
-                  key={item.icon}
+                  key={item.name}
                   href={item.link}
                   className="flex flex-row transition-all duration-300 hover:text-primary-100 items-center gap-1">
                   <ChevronRight />
@@ -69,7 +69,7 @@ const Footer = (props: Props) => {
               {FooterLinks2.map((item) => (
                 <Link
                   key={item.icon}
-                  href={item.link}
+                  href={item.name}
                   className="flex flex-row transition-all duration-300 hover:text-primary-100 items-center gap-1">
                   <ChevronRight />
                   {item.name}

@@ -10,13 +10,6 @@ export type MenuLinkType = {
   subMenu?: MenuLinkType[];
 };
 
-export type UserType = {
-  clerkId?: string;
-  email: string;
-  fullName: string;
-  avatar: string;
-};
-
 export type CategoryType = {
   id: string;
   name: string;
@@ -53,4 +46,19 @@ export type Blog = {
     url: string;
   };
   createdAt: Date;
+};
+
+export type ContactFormPayloadType = {
+  name: string;
+  email: string;
+  inquiryType: string;
+  phone: number;
+  message: string;
+};
+
+export type UserType = {
+  fullName: string;
+  email: string;
+  avatar: string;
+  clerkId?: string;
 };
