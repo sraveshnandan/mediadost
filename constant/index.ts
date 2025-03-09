@@ -141,13 +141,13 @@ export const HeroCTAActions = [
   {
     icon: faMagnifyingGlass,
     name: "Find",
-    link: "/plan",
+    link: "/events",
     desc: "Events",
   },
   {
     icon: faLightbulb,
     name: "Create",
-    link: "/plan",
+    link: "https://mediadost.com/create-with-us",
     desc: "With Us",
   },
 ];

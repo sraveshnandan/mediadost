@@ -63,6 +63,15 @@ const Navbar = () => {
               {item.name}
             </Link>
           ))}
+
+          {user?.id && (
+            <Link
+              href={"/my-order"}
+              className="text-primary-100 text-lg font-semibold hover:text-primary-100 duration-300 transition-all hover:scale-110"
+            >
+              My Order
+            </Link>
+          )}
         </nav>
 
         {/* Right Buttons */}
@@ -117,11 +126,19 @@ const Navbar = () => {
                     <Link
                       href={item.link}
                       key={item.link}
-                      className="text-xl hover:text-primary-100 text-start duration-300 transition-all hover:scale-110 font-medium border-b-2 border-b-background pb-3"
+                      className="text-xl hover:text-primary-100 text-start duration-300 transition-all hover:scale-110 font-medium border-b-2 border-b-slate-200 pb-3"
                     >
                       {item.name}
                     </Link>
                   ))}
+                  {user?.id && (
+                    <Link
+                      href={"/my-order"}
+                      className="text-primary-100 border-b-2 border-b-slate-200 pb-2 text-lg font-semibold hover:text-primary-100 duration-300 transition-all hover:scale-110"
+                    >
+                      My Order
+                    </Link>
+                  )}
                 </SheetDescription>
               </SheetHeader>
             </SheetContent>

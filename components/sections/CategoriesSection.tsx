@@ -21,7 +21,8 @@ const CategoriesSection = async (props: Props) => {
             <Link
               href={`/`}
               key={item.id}
-              className="bg-background h-40 transition-all duration-500 hover:scale-90 w-full rounded-2xl p-2 flex items-center justify-center flex-col">
+              className="bg-slate-200 h-40 transition-all duration-500 hover:scale-90 w-full rounded-2xl p-2 flex items-center justify-center flex-col"
+            >
               <CategoryIcon iconClass={item.icon} />
               <h4 className="text-primary-100 font-semibold mt-2">
                 {item.name}
