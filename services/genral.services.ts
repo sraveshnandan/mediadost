@@ -72,20 +72,21 @@ export const FetchAllBlogs = async () => {
   try {
     const query = gql`
       query MyQuery {
-        blogs {
-          id
+        blogs(orderBy: publishedAt_ASC) {
           author
           title
+          context
+          createdAt
+          slug
+          addImage {
+            id
+            url
+          }
+          id
           mainImage {
             id
             url
           }
-          adImage {
-            id
-            url
-          }
-          context
-          createdAt
         }
       }
     `;
@@ -97,30 +98,31 @@ export const FetchAllBlogs = async () => {
   }
 };
 
-export const FetchBlogById = async (blogId: string) => {
+export const FetchBlogBySlug = async (slug: string) => {
   try {
     const query = gql`
-      query MyQuery($blogId: ID!) {
-        blogs(where: { id: "cm681ocar048s07pj0i5lw605" }) {
-          author
-          context
+      query MyQuery($slug: String!) {
+        blog(where: { slug: $slug }) {
           id
-          mainImage {
-            url
-            id
-          }
           title
-          createdAt
-          adImage {
+          author
+          mainImage {
             id
             url
           }
+          addImage {
+            id
+            url
+          }
+          context
+          slug
+          createdAt
         }
       }
     `;
 
     const variables = {
-      blogId,
+      slug,
     };
 
     const res: GraphQLResponse = await api_client.request(query, variables);

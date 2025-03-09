@@ -37,7 +37,7 @@ const Navbar = () => {
   return (
     <header
       className={`sticky top-0 w-full lg:px-8 md:px-5 px-4 z-50 bg-transparent backdrop-blur-md ${
-        isScrolled && "shadow-md"
+        isScrolled ? "shadow-md bg-transparent/40" : ""
       } 
       ${atTop && "translate-y-0"}
       ${isScrolled && "translate-y-0"}

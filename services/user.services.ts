@@ -32,31 +32,25 @@ export const AddUser = async (payload: UserType) => {
   }
 };
 
-export const updateUser = async (payload: UserType, clerkId: String) => {
+export const updateUser = async (payload: UserType) => {
   try {
-    console.log(payload)
-//     const query = gql`
-//      updateCustomer($clerkId:string!, $data:)(
-//     data: $data,
-//     where: {clerkId: $clerkId}
-//   ) {
-//     avatar
-//     clerkId
-//     createdAt
-//     email
-//     fullName
-//     id
-//   }
-//     `;
+    console.log(payload);
+    const query = gql`
+      mutation MyMutation($data: CustomerUpdateInput!, $id: String!) {
+        updateCustomer(where: { clerkId: $id }, data: $data) {
+          id
+        }
+      }
+    `;
 
-//     const variables = {
-//       data: payload,
-//       clerkId,
-//     };
+    const variables = {
+      data: payload,
+      id: payload?.clerkId,
+    };
 
-//     const res: Record<string, any> = await api_client.request(query, variables);
+    const res: Record<string, any> = await api_client.request(query, variables);
 
-//     return res.UpdateCustomer;
+    return res.UpdateCustomer;
   } catch (error: any) {
     console.log(JSON.stringify(error, null, 2));
     return error?.message ?? "Something went wrong.";

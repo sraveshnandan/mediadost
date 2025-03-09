@@ -7,8 +7,8 @@ const api_token = process.env.API_TOKEN! || "";
 export const SubmitContactForm = async (payload: ContactFormPayloadType) => {
   try {
     const query = gql`
-      mutation MyMutation($data: ContactSubmissionCreateInput!) {
-        createContactSubmission(data: $data) {
+      mutation MyMutation($data: ContactFormCreateInput!) {
+        createContactForm(data: $data) {
           id
         }
       }
@@ -24,10 +24,8 @@ export const SubmitContactForm = async (payload: ContactFormPayloadType) => {
       },
     };
 
-    const res: Record<string, any> = await api_client
-      .setHeader("Authorization", `Bearer ${api_token}`)
-      .request(query, variables);
-    return res.createContactSubmission;
+    const res: Record<string, any> = await api_client.request(query, variables);
+    return res.createContactForm;
   } catch (error: any) {
     console.log(JSON.stringify(error, null, 2));
     return error?.message ?? "Something went wrong.";
@@ -37,11 +35,9 @@ export const SubmitContactForm = async (payload: ContactFormPayloadType) => {
 export const SubmitNewLetterForm = async (email: string) => {
   try {
     const query = gql`
-      mutation MyMutation($email: String!) {
-        createNewLetterSubscriber(data: { email: $email, isActive: true }) {
-          email
+      mutation MyMutatio($email: String!) {
+        createNewsLetter(data: { email: $email, isActive: true }) {
           id
-          isActive
         }
       }
     `;
@@ -50,10 +46,10 @@ export const SubmitNewLetterForm = async (email: string) => {
       email,
     };
 
-    const res: Record<string, any> = await api_client
-      .setHeader("Authorization", `Bearer ${api_token}`)
-      .request(query, variables);
-    return res.createNewLetterSubscriber;
+    const res: Record<string, any> = await api_client.request(query, variables);
+
+    console.log(res);
+    return res.createNewsLetter;
   } catch (error: any) {
     console.log(JSON.stringify(error, null, 2));
     return error?.message ?? "Something went wrong.";

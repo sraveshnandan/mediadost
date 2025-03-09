@@ -9,7 +9,7 @@ type Props = {
 };
 
 const BlogCard = ({ blog }: Props) => {
-  const { id, adImage, author, title, createdAt, mainImage } = blog;
+  const { id, adImage, author, title, createdAt, mainImage, slug } = blog;
   return (
     <div className="w-full p-3 rounded-2xl duration-300 transition-all hover:shadow-lg  border">
       <div>
@@ -25,7 +25,7 @@ const BlogCard = ({ blog }: Props) => {
       </div>
 
       <div className="my-2">
-        <h2 className="font-semibold cursor-pointer hover:text-primary-100 hover:opacity-100 drop-shadow-md  opacity-75 text-xl text-Text-100 line-clamp-2">
+        <h2 className="font-semibold cursor-pointer hover:text-primary-100 hover:opacity-100 drop-shadow-md  opacity-75 text-2xl text-Text-100 line-clamp-2">
           {title}
         </h2>
       </div>
@@ -33,7 +33,7 @@ const BlogCard = ({ blog }: Props) => {
       {/* read more button  */}
       <div className="w-full justify-end flex items-end">
         <Link
-          href={`/blog/${id}`}
+          href={`/blog/${slug}`}
           className="flex hover:text-yellow-100 text-primary-100 group flex-row  font-semibold items-center gap-1"
         >
           Read more

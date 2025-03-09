@@ -45,6 +45,7 @@ export type Blog = {
     id: string;
     url: string;
   };
+  slug: string;
   createdAt: Date;
 };
 

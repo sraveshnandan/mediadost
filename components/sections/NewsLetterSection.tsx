@@ -52,7 +52,7 @@ const NewsLetterSection = (props: Props) => {
 
         <form
           onSubmit={onFormSubmit}
-          className="xl:w-[30%] overflow-hidden lg:mt-12 gap-1  mt-6 items-center lg:w-[50%] md:w-[60%] w-[95%] my-4 flex flex-row bg-white rounded-md p-2"
+          className="xl:w-[50%] overflow-hidden lg:mt-12 gap-1  mt-6 items-center lg:w-[70%] md:w-[60%] w-[95%] my-4 flex flex-row bg-white rounded-md p-2"
         >
           <div className=" flex items-center  flex-row flex-grow">
             {" "}
@@ -60,7 +60,7 @@ const NewsLetterSection = (props: Props) => {
             <input
               value={email}
               onChange={(ev) => setEmail(ev.target.value.trim())}
-              className=" outline-none placeholder:font-medium border-none md:p-3 p-2"
+              className=" outline-none flex-grow placeholder:font-medium border-none md:p-3 p-2"
               type="text"
               placeholder="Enter your email..."
             />

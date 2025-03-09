@@ -1,4 +1,4 @@
-import { FetchBlogById } from "@/services/genral.services";
+import { FetchBlogBySlug } from "@/services/genral.services";
 import { Blog } from "@/types";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
@@ -7,19 +7,22 @@ import Showdown from "showdown";
 
 type Props = {};
 
-const BlogDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const blogId = (await params).id;
+const BlogDetails = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
+  const slug = (await params).slug;
 
-  const blog: Blog = await FetchBlogById(blogId);
+  const blog: Blog = await FetchBlogBySlug(slug);
 
   const converter = new Showdown.Converter();
   converter.setFlavor("allOn");
   const contentHTML = converter.makeHtml(blog?.context || "");
-
-  console.log(blog);
-
   return !blog?.title ? (
-    <></>
+    <div className="text-red-400 min-h-[100vh] flex items-center justify-center text-xl">
+      No data found.
+    </div>
   ) : (
     <div className="w-[80%] mx-auto flex-col flex py-8">
       <h2 className="text-3xl  text-secondary-100 font-semibold">
@@ -44,7 +47,7 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
           width={1024}
           height={720}
           alt="blog images"
-          className="aspect-video w-full h-auto rounded-lg"
+          className="aspect-video w-full h-auto  rounded-lg"
         />
       </div>
 
