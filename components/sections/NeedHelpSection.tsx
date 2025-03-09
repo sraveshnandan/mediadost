@@ -3,13 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
+type Props = {
+  noMargin?: boolean;
+};
 
-const NeedHelpSection = (props: Props) => {
+const NeedHelpSection = ({ noMargin = false }: Props) => {
   return (
     <div
       style={{ backgroundImage: "url('/images/cta-bg.png')" }}
-      className="bg-primary-100 gap-4 flex lg:flex-row flex-col my-8 rounded-2xl p-12 w-[95%] md:w-[90%] mx-auto text-white"
+      className={`bg-primary-100 gap-4 flex lg:flex-row flex-col my-8 rounded-2xl p-12 ${
+        noMargin ? "w-full" : "w-[95%] md:w-[90%]"
+      } mx-auto text-white`}
     >
       <div className="flex-grow flex items-start flex-col ">
         <h1 className="font-bold text-4xl mb-4">Need Help ?</h1>

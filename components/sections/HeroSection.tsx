@@ -1,6 +1,6 @@
 import { HeroCTAActions } from "@/constant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ArrowRightIcon, ArrowUpRightFromSquareIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ const HeroSection = (props: Props) => {
               </h2>
               <p className="text-md font-medium">{item.desc}</p>
 
-              <ArrowUpRightFromSquareIcon color="#535de0" />
+              <ArrowRightIcon className="self-start" color="#535de0" />
             </Link>
           ))}
         </div>

@@ -24,17 +24,17 @@ interface CategoryIconProps {
 }
 
 const CategoryIcon: React.FC<CategoryIconProps> = ({ iconClass }) => {
-  const icon = getFontAwesomeIcon(iconClass);
+  const icon = iconClass;
   return icon ? (
     <FontAwesomeIcon
       className="drop-shadow-xl"
-      icon={icon as any}
+      icon={iconClass as any}
       size="3x"
       color="#535de0"
     />
   ) : (
-    <FontAwesomeIcon size="3x" icon={`info-circle`} color="#535de0" />
-  ); // Renders only if the icon exists
+    <FontAwesomeIcon size="3x" icon={`bullhorn`} color="#535de0" />
+  );
 };
 
 export default CategoryIcon;

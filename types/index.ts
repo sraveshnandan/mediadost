@@ -63,3 +63,50 @@ export type UserType = {
   avatar: string;
   clerkId?: string;
 };
+
+export type EventType = {
+  id: string;
+  name: string;
+  price: number;
+  slug: string;
+  description: string;
+  images: {
+    id: string;
+    url: string;
+  }[];
+  fullAddress: string;
+  startDate: Date;
+  endDate: Date;
+  extraDetails: {
+    type: string;
+    bronzeSponserShip?: {
+      isFree?: boolean;
+      price?: number;
+    };
+    sliverSponserShip?: {
+      isFree?: boolean;
+      price?: number;
+    };
+    goldSponserShip?: {
+      isFree?: boolean;
+      price?: number;
+    };
+    platinumSponserShip?: {
+      isFree?: boolean;
+      price?: number;
+    };
+    entrenceBanner?: {
+      isFree?: boolean;
+      price?: number;
+    };
+    mainStageBanner?: {
+      isFree?: boolean;
+      price?: number;
+    };
+    vipLoungeBanner?: {
+      isFree?: boolean;
+      price?: number;
+    };
+  };
+  createdAt: Date;
+};

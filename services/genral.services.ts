@@ -8,11 +8,11 @@ export const FetchAllCategories = async () => {
         categories {
           id
           icon
+          name
           image {
             id
             url
           }
-          name
         }
       }
     `;
@@ -127,6 +127,131 @@ export const FetchBlogBySlug = async (slug: string) => {
 
     const res: GraphQLResponse = await api_client.request(query, variables);
     return res.blog;
+  } catch (error: any) {
+    return error?.message ?? "Something went wrong.";
+  }
+};
+
+export const FetchAllEvent = async () => {
+  try {
+    const query = gql`
+      query MyQuery {
+        events(orderBy: publishedAt_ASC) {
+          createdAt
+          endDate
+          fullAddress
+          id
+          images {
+            id
+            url
+          }
+          location
+          name
+          price
+          startDate
+          slug
+          extraDetails {
+            type
+            bronzeSponserShip {
+              isFree
+              price
+            }
+            sliverSponserShip {
+              isFree
+              price
+            }
+            goldSponserShip {
+              isFree
+              price
+            }
+            platinumSponserShip {
+              isFree
+              price
+            }
+            entrenceBanner {
+              isFree
+              price
+            }
+            mainStageBanner {
+              isFree
+              price
+            }
+            vipLoungeBanner {
+              isFree
+              price
+            }
+          }
+        }
+      }
+    `;
+
+    const res: GraphQLResponse = await api_client.request(query);
+    return res.events;
+  } catch (error: any) {
+    return error?.message ?? "Something went wrong.";
+  }
+};
+
+export const FetchEventBySlug = async (slug: string) => {
+  try {
+    const query = gql`
+      query MyQuery($slug: String!) {
+        event(where: { slug: $slug }) {
+          createdAt
+          endDate
+          fullAddress
+          id
+          images {
+            id
+            url
+          }
+          description
+          location
+          name
+          price
+          startDate
+          slug
+          extraDetails {
+            type
+            bronzeSponserShip {
+              isFree
+              price
+            }
+            sliverSponserShip {
+              isFree
+              price
+            }
+            goldSponserShip {
+              isFree
+              price
+            }
+            platinumSponserShip {
+              isFree
+              price
+            }
+            entrenceBanner {
+              isFree
+              price
+            }
+            mainStageBanner {
+              isFree
+              price
+            }
+            vipLoungeBanner {
+              isFree
+              price
+            }
+          }
+        }
+      }
+    `;
+
+    const variables = {
+      slug,
+    };
+
+    const res: GraphQLResponse = await api_client.request(query, variables);
+    return res.event;
   } catch (error: any) {
     return error?.message ?? "Something went wrong.";
   }

@@ -1,9 +1,8 @@
+export const revalidate = 20;
 import { FetchAllCategories } from "@/services/genral.services";
 import React from "react";
 import CategoryIcon from "../ui/DynamicIcon";
 import Link from "next/link";
-
-export const revalidate = 20;
 
 type Props = {};
 

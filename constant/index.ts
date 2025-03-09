@@ -99,7 +99,7 @@ export const SocialLinks: { icon: string; link: string }[] = [
   },
   {
     icon: "/icons/instagram.png",
-    link: "/",
+    link: "https://www.instagram.com/mediadost_/?igsh=MXRpa2w5a29qOTljeg%3D%3D#",
   },
   {
     icon: "/icons/linkedin.svg",
