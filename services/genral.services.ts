@@ -101,20 +101,20 @@ export const FetchBlogById = async (blogId: string) => {
   try {
     const query = gql`
       query MyQuery($blogId: ID!) {
-        blog(where: { id: $blogId }) {
-          id
+        blogs(where: { id: "cm681ocar048s07pj0i5lw605" }) {
           author
-          title
+          context
+          id
           mainImage {
-            id
             url
+            id
           }
+          title
+          createdAt
           adImage {
             id
             url
           }
-          context
-          createdAt
         }
       }
     `;

@@ -1,12 +1,39 @@
-import { Bell, MailOpen } from "lucide-react";
+"use client";
+import { SubmitNewLetterForm } from "@/services/form.services";
+import { Bell, Loader2Icon, MailOpen } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 type Props = {};
 
 const NewsLetterSection = (props: Props) => {
+  const [email, setEmail] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      if (!email.length) {
+        return toast.error("Please enter a valid email.");
+      }
+      setLoading(true);
+      const res = await SubmitNewLetterForm(email);
+
+      if (res.id) {
+        return toast.success("You've subscribed to  our newsletter.");
+      } else {
+        return toast.success("Already Subscribed");
+      }
+    } catch (error) {
+      return toast.error("Something went wrong.");
+    } finally {
+      setLoading(false);
+      setEmail("");
+    }
+  };
   return (
-    <div className="relative xl:-mx-16 lg:-mx-12 md:-mx-8 -mx-4 lg:h-[40vh] h-65vh md:w-70vh ">
+    <div className="relative xl:-mx-16 lg:-mx-12 md:-mx-8 -mx-4 lg:h-[40vh] h-[45vh] md:w-70vh ">
       <Image
         src="/images/hero-bg.jpg"
         alt="hero"
@@ -23,20 +50,37 @@ const NewsLetterSection = (props: Props) => {
 
         {/* email input box  */}
 
-        <form className="xl:w-[40%] overflow-hidden lg:mt-12  mt-6 items-center lg:w-[50%] md:w-[60%] w-[95%] my-4 flex flex-row bg-white rounded-md p-2">
-          <div className=" flex items-center flex-row flex-grow">
+        <form
+          onSubmit={onFormSubmit}
+          className="xl:w-[30%] overflow-hidden lg:mt-12 gap-1  mt-6 items-center lg:w-[50%] md:w-[60%] w-[95%] my-4 flex flex-row bg-white rounded-md p-2"
+        >
+          <div className=" flex items-center  flex-row flex-grow">
             {" "}
-            <MailOpen className="text-gray-400" size={20} />
+            <MailOpen className="text-gray-400" size={18} />
             <input
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value.trim())}
               className=" outline-none placeholder:font-medium border-none md:p-3 p-2"
               type="text"
               placeholder="Enter your email..."
             />
           </div>
-          <div className="max-w-[40%] w-fit">
-            <button className="bg-primary-100 w-full p-2  text-xs md:text-md  flex gap-2 lg:px-5 lg:py-3 px-2 py-2 justify-center text-white font-semibold line-clamp-1  rounded-md   flex-row items-center">
-              <Bell />
-              Subscribe Now
+          <div className="max-w-[40%]">
+            <button
+              type="submit"
+              className="bg-primary-100 w-full p-3  text-lg md:text-md  flex gap-2  justify-center text-white font-semibold line-clamp-1  rounded-lg   flex-row items-center"
+            >
+              {loading ? (
+                <>
+                  <Loader2Icon size={16} className="animate-spin" />
+                  <span className="hidden sm:flex">Loading...</span>
+                </>
+              ) : (
+                <>
+                  <Bell size={16} />
+                  <span className="hidden sm:flex">Subscribe Now</span>
+                </>
+              )}
             </button>
           </div>
         </form>

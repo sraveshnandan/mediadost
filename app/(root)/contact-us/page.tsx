@@ -65,10 +65,11 @@ const ContactPage = () => {
       <div className="w-full h-96 rounded-lg overflow-hidden">
         <iframe
           className="w-full h-full"
-          src="https://www.google.com/maps/dir//Government+Engineering+College+(GEC),+Jamui+Village:+Amrath+Post+:+Amrath,+Bihar+811313/@24.9541426,86.1828698,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0x39f229989386e797:0xcb8bce312617261f!2m2!1d86.1828698!2d24.9541426?entry=ttu&g_ep=EgoyMDI1MDIyNi4xIKXMDSoASAFQAw%3D%3D"
+          src="https://maps.google.com/maps?width=667&amp;height=377&amp;hl=en&amp;q=GEC, jamui&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           allowFullScreen
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"></iframe>
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
   );

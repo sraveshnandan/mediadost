@@ -14,12 +14,16 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   const converter = new Showdown.Converter();
   converter.setFlavor("allOn");
-  const contentHTML = converter.makeHtml(blog?.context);
+  const contentHTML = converter.makeHtml(blog?.context || "");
 
-  return (
+  console.log(blog);
+
+  return !blog?.title ? (
+    <></>
+  ) : (
     <div className="w-[80%] mx-auto flex-col flex py-8">
       <h2 className="text-3xl  text-secondary-100 font-semibold">
-        {blog.title}
+        {blog?.title}
       </h2>
 
       {/* author section  */}
@@ -28,7 +32,7 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
         <h6 className="text-gray-600 text-lg font-semibold">{blog?.author}</h6>
         <h6 className="text-md flex flex-row items-center gap-2 font-semibold  text-secondary-100 px-5 py-1">
           <Calendar color="green" className="text-sm" />
-          {new Date(blog.createdAt).toLocaleDateString()}
+          {new Date(blog?.createdAt).toLocaleDateString()}
         </h6>
       </div>
 
@@ -47,7 +51,7 @@ const BlogDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
       <div className="my-4 ">
         <div
           className="text-xl  prose prose-lg prose-blue max-w-none leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: contentHTML }}
+          dangerouslySetInnerHTML={{ __html: contentHTML || "" }}
         />
       </div>
     </div>

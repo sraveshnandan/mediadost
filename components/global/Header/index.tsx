@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { SignedOut, SignOutButton, useClerk, useUser } from "@clerk/nextjs";
+import { SignOutButton, useClerk, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -41,12 +41,14 @@ const Navbar = () => {
       } 
       ${atTop && "translate-y-0"}
       ${isScrolled && "translate-y-0"}
-      transition-transform duration-500`}>
+      transition-transform duration-500`}
+    >
       <div className="container mx-auto  lg:py-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link
           href={"/"}
-          className="md:text-2xl text-xl font-bold text-primary-100">
+          className="md:text-2xl text-xl font-bold text-primary-100"
+        >
           Media Dost
         </Link>
 
@@ -56,7 +58,8 @@ const Navbar = () => {
             <Link
               key={item.link}
               href={item.link}
-              className="text-Text-100 text-lg font-semibold hover:text-primary-100 duration-300 transition-all hover:scale-110">
+              className="text-Text-100 text-lg font-semibold hover:text-primary-100 duration-300 transition-all hover:scale-110"
+            >
               {item.name}
             </Link>
           ))}
@@ -68,7 +71,8 @@ const Navbar = () => {
             <div className="flex flex-row items-center gap-4">
               <button
                 onClick={() => openUserProfile()} // Open Clerk Profile Modal
-                className="bg-primary-100 text-white rounded-full overflow-hidden md:text-lg text-md font-semibold flex items-center gap-2">
+                className="bg-primary-100 text-white rounded-full overflow-hidden md:text-lg text-md font-semibold flex items-center gap-2"
+              >
                 <Image
                   src={user?.imageUrl}
                   alt="user avatar"
@@ -87,7 +91,8 @@ const Navbar = () => {
           ) : (
             <Link
               href={`/sign-in`}
-              className="bg-primary-100 text-white  md:py-3 py-2 md:px-5 px-3 rounded-md md:text-lg text-md font-semibold flex items-center gap-2">
+              className="bg-primary-100 text-white  md:py-3 py-2 md:px-5 px-3 rounded-md md:text-lg text-md font-semibold flex items-center gap-2"
+            >
               <User2Icon />
               Login
             </Link>
@@ -103,16 +108,17 @@ const Navbar = () => {
             <SheetContent side={"left"}>
               <SheetHeader>
                 <SheetTitle>
-                  <h2 className="text-2xl font-semibold border-b-2 border-b-background pb-3 text-primary-100 mb-3">
+                  <h2 className="text-2xl text-start font-semibold border-b-2 border-b-background pb-3 text-primary-100 mb-3">
                     Media Dost
                   </h2>
                 </SheetTitle>
-                <SheetDescription className="flex flex-col gap-2">
+                <SheetDescription className="flex flex-col gap-2 ">
                   {MenuLinks.map((item) => (
                     <Link
                       href={item.link}
                       key={item.link}
-                      className="text-xl hover:text-primary-100 duration-300 transition-all hover:scale-110 font-medium border-b-2 border-b-background pb-3">
+                      className="text-xl hover:text-primary-100 text-start duration-300 transition-all hover:scale-110 font-medium border-b-2 border-b-background pb-3"
+                    >
                       {item.name}
                     </Link>
                   ))}

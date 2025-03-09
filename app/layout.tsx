@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/global/Header";
 import Footer from "@/components/global/Footer";
@@ -9,12 +9,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false; // Prevent duplicate styles
 
 import { Toaster } from "react-hot-toast";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
+const urbanist = Urbanist({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -33,10 +29,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} font-medium antialiased `}>
+        <body className={`${urbanist.variable} font-medium antialiased `}>
           <Navbar />
           {children}
+
           <Footer />
           <Toaster position="top-center" />
         </body>

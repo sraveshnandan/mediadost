@@ -8,7 +8,7 @@ type Props = {};
 
 const HeroSection = (props: Props) => {
   return (
-    <div className="mb-8 relative xl:-mx-16 lg:-mx-12 md:-mx-8 -mx-4 md:h-[50vh] lg:h-[60vh] ">
+    <div className="mb-8 relative xl:-mx-16  lg:-mx-12 md:-mx-8 -mx-4 md:h-[50vh] xl:h-[60vh] ">
       <Image
         src="/images/hero-bg.jpg"
         alt="hero"
@@ -24,12 +24,13 @@ const HeroSection = (props: Props) => {
 
         {/* CTA Actions  */}
 
-        <div className="grid grid-cols-2 md:grid-cols-3 w-[90%] md:w-[70%] lg:w-[50%] gap-4 my-8 mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 w-[90%] md:w-[70%] xl:w-[40%] gap-4 my-8 lg:my-20 mx-auto">
           {HeroCTAActions.map((item) => (
             <Link
               href={item.link}
               key={item.name}
-              className="flex transition-all duration-300 hover:drop-shadow-lg hover:scale-95 flex-col w-full items-center p-3 gap-2 bg-white rounded-md ">
+              className="flex transition-all w-full duration-300 hover:drop-shadow-lg hover:scale-95 flex-col  items-center p-3 gap-2 bg-white rounded-2xl "
+            >
               <FontAwesomeIcon icon={item.icon} size="3x" color="#535de0" />
               <h2 className="text-primary-100 font-semibold text-2xl">
                 {item.name}

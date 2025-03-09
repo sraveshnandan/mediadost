@@ -11,14 +11,14 @@ const WhyChooseUsSection = (props: Props) => {
     <div className="w-full flex lg:flex-row my-8 flex-col items-center justify-center">
       {/* image section  */}
       <div className="lg:w-1/2 relative my-4 lg:my-0 w-full flex items-center justify-center">
-        <div className="w-[60%]">
+        <div className="w-[90%] md:w-[60%]">
           <Image
             src={"/images/about-banner1.jpg"}
             alt="banner1"
             width={1024}
             height={720}
             quality={100}
-            className="w-full h-full   rounded-md  transition-all duration-700"
+            className="w-full h-full   rounded-2xl  transition-all duration-700"
           />
         </div>
         <Image
@@ -26,14 +26,14 @@ const WhyChooseUsSection = (props: Props) => {
           alt="banner1"
           width={100}
           height={100}
-          className="w-[20%] absolute bottom-4 right-2 transition-all  duration-500 rotate-45 hover:rotate-0 cursor-pointer  scale-50 hover:scale-75 drop-shadow-md rounded-md"
+          className="w-[30%] absolute bottom-4 right-2 transition-all  duration-500 rotate-45 hover:rotate-0 cursor-pointer  scale-50 hover:scale-75 drop-shadow-md rounded-2xl"
         />
         <Image
           src={"/images/about-banner3.jpg"}
           alt="banner1"
           width={100}
           height={100}
-          className="w-[20%] absolute top-4 left-2  transition-all  duration-500 -rotate-45 hover:rotate-0 cursor-pointer scale-50 hover:scale-75 drop-shadow-md rounded-md"
+          className="w-[30%] absolute top-4 left-2  transition-all  duration-500 -rotate-45 hover:rotate-0 cursor-pointer scale-50 hover:scale-75 drop-shadow-md rounded-2xl"
         />
       </div>
       {/* text section */}
@@ -50,7 +50,8 @@ const WhyChooseUsSection = (props: Props) => {
             <div key={item.icon} className="flex my-6 flex-row gap-4">
               <div
                 style={{ backgroundColor: item.color }}
-                className={`min-w-16 min-h-16 flex items-center justify-center rounded-full overflow-hidden `}>
+                className={`min-w-16 min-h-16 flex items-center justify-center rounded-full overflow-hidden `}
+              >
                 <Image
                   src={item.icon}
                   alt="icon"
@@ -72,7 +73,8 @@ const WhyChooseUsSection = (props: Props) => {
         {/* CTA button  */}
         <Link
           href={`/about-us`}
-          className="bg-primary-100 py-4 px-3 rounded-md my-4 text-white text-xl font-semibold flex items-center gap-2 flex-row ">
+          className="bg-primary-100 py-4 px-3 rounded-2xl my-4 text-white text-xl font-semibold flex items-center gap-2 flex-row "
+        >
           Know About Us
           <ArrowRightIcon />
         </Link>

@@ -9,7 +9,8 @@ const NeedHelpSection = (props: Props) => {
   return (
     <div
       style={{ backgroundImage: "url('/images/cta-bg.png')" }}
-      className="bg-primary-100 gap-4 flex lg:flex-row flex-col my-8 rounded-md p-12 w-[95%] md:w-[85%] mx-auto text-white">
+      className="bg-primary-100 gap-4 flex lg:flex-row flex-col my-8 rounded-2xl p-12 w-[95%] md:w-[90%] mx-auto text-white"
+    >
       <div className="flex-grow flex items-start flex-col ">
         <h1 className="font-bold text-4xl mb-4">Need Help ?</h1>
         <h3 className="font-semibold text-xl">
@@ -19,19 +20,20 @@ const NeedHelpSection = (props: Props) => {
 
         <Link
           href={`/plan`}
-          className="flex bg-Text-100 px-5 py-3 rounded-md mt-6 items-center gap-3 flex-row">
+          className="flex bg-Text-100 px-5 py-3 rounded-2xl mt-6 items-center gap-3 flex-row"
+        >
           <CalendarPlusIcon />
           Request Plan
         </Link>
       </div>
 
-      <div className="h-full w-full  flex lg:w-[35%] justify-end">
+      <div className="flex lg:w-[35%]  justify-end items-center lg:justify-center">
         <Image
           src={"/images/thinking.svg"}
           alt="think"
           width={50}
           height={50}
-          className="lg:w-full lg:h-full w-36 h-36"
+          className="aspect-square h-40 w-40"
         />
       </div>
     </div>

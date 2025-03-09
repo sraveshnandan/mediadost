@@ -33,3 +33,29 @@ export const SubmitContactForm = async (payload: ContactFormPayloadType) => {
     return error?.message ?? "Something went wrong.";
   }
 };
+
+export const SubmitNewLetterForm = async (email: string) => {
+  try {
+    const query = gql`
+      mutation MyMutation($email: String!) {
+        createNewLetterSubscriber(data: { email: $email, isActive: true }) {
+          email
+          id
+          isActive
+        }
+      }
+    `;
+
+    const variables = {
+      email,
+    };
+
+    const res: Record<string, any> = await api_client
+      .setHeader("Authorization", `Bearer ${api_token}`)
+      .request(query, variables);
+    return res.createNewLetterSubscriber;
+  } catch (error: any) {
+    console.log(JSON.stringify(error, null, 2));
+    return error?.message ?? "Something went wrong.";
+  }
+};

@@ -39,7 +39,8 @@ const Footer = (props: Props) => {
                 <Link
                   key={item.icon}
                   href={item.link}
-                  className="rounded-md hover:bg-primary-100 transition-all duration-300 bg-transparent/30 p-3 ">
+                  className="rounded-md hover:bg-primary-100 transition-all duration-300 bg-transparent/30 p-3 "
+                >
                   <Image src={item.icon} width={25} height={25} alt="logo" />
                 </Link>
               ))}
@@ -53,7 +54,8 @@ const Footer = (props: Props) => {
                 <Link
                   key={item.name}
                   href={item.link}
-                  className="flex flex-row transition-all duration-300 hover:text-primary-100 items-center gap-1">
+                  className="flex flex-row transition-all duration-300 hover:text-primary-100 items-center gap-1"
+                >
                   <ChevronRight />
                   {item.name}
                 </Link>
@@ -68,9 +70,10 @@ const Footer = (props: Props) => {
             <div className="w-full flex  gap-2 flex-col">
               {FooterLinks2.map((item) => (
                 <Link
-                  key={item.icon}
+                  key={item.name}
                   href={item.name}
-                  className="flex flex-row transition-all duration-300 hover:text-primary-100 items-center gap-1">
+                  className="flex flex-row transition-all duration-300 hover:text-primary-100 items-center gap-1"
+                >
                   <ChevronRight />
                   {item.name}
                 </Link>
@@ -88,7 +91,8 @@ const Footer = (props: Props) => {
                 <Link
                   href={"/"}
                   key={item.icon}
-                  className="flex items-center gap-3 flex-row">
+                  className="flex items-center gap-3 flex-row"
+                >
                   <Image
                     src={item.icon}
                     alt={item.title}
